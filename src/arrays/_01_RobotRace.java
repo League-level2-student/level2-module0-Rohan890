@@ -17,20 +17,23 @@ public static void main(String[] args) {
 		rob[i] = new Robot();
 		rob[i].setX(x);
 		rob[i].setY(y);
+		rob[i].setSpeed(100);
 		x+=180;
 	}
-int z=0;
-while(rob[z].getY()>25) {
+
+while(finished == false) {
 	for (int i = 0; i < 5; i++) {
 		Random rand = new Random(); 
 		int value = rand.nextInt(50);
 		rob[i].move(value);
+		
+		if(rob[i].getY()<=25) {
+			finished = true;
+			JOptionPane.showMessageDialog(null, "Robot " + i + " won!");
+			break;
+		}
+		}
 
-	}
-	if(rob[z].getY()<=25) {
-		JOptionPane.showMessageDialog(null, "you won!");
-	}
-z++;
 }
 
 }
